@@ -1,0 +1,11 @@
+.Register{
+  border-radius: 50px;
+}
+.contactUs{
+  background-color: #fab555;
+  border-radius: 100px
+}
+input,textarea {
+  border-radius: 35px;
+  background-color: #ffe3c1;
+}
