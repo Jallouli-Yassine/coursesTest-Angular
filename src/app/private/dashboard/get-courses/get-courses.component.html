@@ -1,13 +1,17 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h3 class="m-0 font-weight-bold text-dark">Table des cours
+
+    <h3 class="m-0 font-weight-bold text-dark">Courses Table
     </h3>
+
     <a routerLink="/dashboard/add-course" style="background-color: #AF2F64FF;color: white;margin-left: 80%" class="btn">add course</a>
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <div class="alert alert-warning" *ngIf="courses.length==0" >there is no courses Yet, Add new one</div>
+
+      <table *ngIf="courses.length>0" class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 
         <thead>
         <tr>
@@ -27,9 +31,7 @@
           <td> {{ c.price }} </td>
           <td>
             <button class="btn btn-warning" [routerLink]="['/dashboard/update-course', c.idCourse]">Edit</button>
-            <button (click)="deleteCourse(c.idCourse)" class="btn btn-danger ml-4">Delete</button>
-
-            <button  routerLink="Details/r.idResto" class="btn btn-info ml-4" >Details</button>
+            <button style="margin-left: 20px" (click)="deleteCourse(c.idCourse)" class="btn btn-danger ml-5">Delete</button>
 
           </td>
         </tr>

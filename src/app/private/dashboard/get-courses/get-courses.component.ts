@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {Course} from '../../../models/course';
 import {CourseService} from '../../../services/course.service';
-import {NgForOf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-get-courses',
-  imports: [RouterModule, NgForOf],
+  imports: [RouterModule, NgForOf, NgIf],
   templateUrl: './get-courses.component.html',
   styleUrl: './get-courses.component.css',
   standalone: true

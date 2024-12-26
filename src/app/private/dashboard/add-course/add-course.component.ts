@@ -22,10 +22,13 @@ export class AddCourseComponent {
     let formControls = {
       title: new FormControl('', [
         Validators.required,
-        Validators.pattern("[a-zA-Z]*"),
+        Validators.pattern('^[^0-9]*$'),
         Validators.minLength(3)
       ]),
-      price: new FormControl('', Validators.required),
+      price: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]*$')
+      ]),
       image: new FormControl('', Validators.required),
     }
     this.addCourseForm = this.fb.group(formControls);

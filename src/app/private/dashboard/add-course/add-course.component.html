@@ -19,11 +19,14 @@
         <!-- Course Price Input -->
         <div class="form-group">
           <label for="price">Course Price</label>
-          <input formControlName="price" type="text" id="price" class="form-control">
+          <input formControlName="price" type="number" id="price" class="form-control">
         </div>
 
         <div *ngIf="getPrice?.touched && getPrice?.invalid">
           <small *ngIf="getPrice?.errors!['required']" class="text-danger">Price is required.</small>
+          <small *ngIf="getPrice?.errors?.['pattern']" class="text-danger">
+            Price must be a valid number.
+          </small>
         </div>
 
         <!-- Image Upload Input -->
@@ -41,7 +44,7 @@
 
         <br>
 
-        <input [disabled]="addCourseForm.invalid" type="submit" value="Add Course" class="btn btn-info">
+        <input [disabled]="addCourseForm.invalid" type="submit" value="Add Course" class="btn" style="background-color: #af2f64;color: white">
       </form>
     </div>
   </div>
