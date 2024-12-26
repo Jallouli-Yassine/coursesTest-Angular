@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {Course} from '../../models/course';
-import {CourseService} from '../../services/course.service';
+import {Course} from '../../../models/course';
+import {CourseService} from '../../../services/course.service';
 import {NgForOf} from '@angular/common';
 
 @Component({

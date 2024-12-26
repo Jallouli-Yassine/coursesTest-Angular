@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {Course} from '../../../models/course';
-import {CourseService} from '../../../services/course.service';
+import {Course} from '../../../../models/course';
+import {CourseService} from '../../../../services/course.service';
 import {NgForOf, NgIf} from '@angular/common';
 
 @Component({

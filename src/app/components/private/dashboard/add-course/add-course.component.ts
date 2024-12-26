@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {CommonModule} from '@angular/common';
-import {Course} from '../../../models/course';
+import {Course} from '../../../../models/course';
 import {HttpClient} from '@angular/common/http';
-import {CourseService} from '../../../services/course.service';
+import {CourseService} from '../../../../services/course.service';
 
 @Component({
   selector: 'app-add-course',
