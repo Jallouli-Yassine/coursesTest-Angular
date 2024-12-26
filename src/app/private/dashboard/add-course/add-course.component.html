@@ -27,10 +27,12 @@
         </div>
 
         <!-- Image Upload Input -->
+        <!-- Image Upload Input -->
         <div class="form-group">
           <label for="image">Course Image</label>
           <input formControlName="image" type="file" id="image" class="form-control" (change)="onImageChange($event)">
         </div>
+
 
         <!-- Error for Image -->
         <div *ngIf="getImage?.touched && getImage?.invalid">

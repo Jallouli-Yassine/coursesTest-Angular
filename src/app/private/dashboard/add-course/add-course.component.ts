@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {CommonModule} from '@angular/common';
+import {Course} from '../../../models/course';
+import {HttpClient} from '@angular/common/http';
+import {CourseService} from '../../../services/course.service';
 
 @Component({
   selector: 'app-add-course',
@@ -12,7 +15,9 @@ import {CommonModule} from '@angular/common';
 })
 export class AddCourseComponent {
   addCourseForm!:FormGroup;
-  constructor(private fb: FormBuilder ,private router: Router) {
+  selectedImage: File | null = null; // Store the selected image
+
+  constructor(private fb: FormBuilder ,private router: Router,private http: HttpClient,private courseService:CourseService) {
 
     let formControls = {
       title: new FormControl('', [
@@ -28,33 +33,36 @@ export class AddCourseComponent {
   get getTitle() { return this.addCourseForm.get('title'); }
   get getPrice() { return this.addCourseForm.get('price'); }
   get getImage() { return this.addCourseForm.get('image'); }
-
+  // Handle image selection
   onImageChange(event: any) {
-    const file = event.target.files[0];
+    const file = event.target.files[0];  // Get the selected file
     if (file) {
-      this.addCourseForm.patchValue({
-        image: file
-      });
+      this.selectedImage = file;  // Store the selected file
     }
   }
 
+  // Add course method
   addCourse() {
-    /*
-    this.restoService.ajouterRestoEtAffecterAplusiersFoyer(this.addRestoForm.value,this.selectedIdFoyers)
-      .subscribe({
-        next: (res) => {
-          this.router.navigate(['/back/restaurant/table']);
-        },
-        error: (err) => {
-          alert("Erreur lors de l'ajout du foyer");
-        }
-      });
+    const formData = new FormData();
+    formData.append('title', this.addCourseForm.get('title')?.value);
+    formData.append('price', this.addCourseForm.get('price')?.value);
 
-     */
+    if (this.selectedImage) {
+      formData.append('image', this.selectedImage, this.selectedImage.name);  // Append the file
+    }
 
+    // Now send the formData to the backend
+    this.courseService.addCourse(formData).subscribe({
+      next: (response) => {
+        alert('Course added successfully!');
+        this.router.navigate(['/courses']);
+      },
+      error: (err) => {
+        console.error('Error adding course:', err);
+        alert('Error adding course!');
+      }
+    });
   }
 
-  loadCourses() {
-    //this.foyerService.getAllFoyer().subscribe(data =>this.allFoyers=data );
-  }
+
 }

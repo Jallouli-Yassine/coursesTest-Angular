@@ -11,22 +11,25 @@
 
   <div class="row">
 
-    <div class="col-md-4 mt-2">
-      <div class="card h-100 shadow-sm">
-        <!-- Product Image -->
-        <a href="#">
-          <img src="/docs/images/blog/image-1.jpg" class="card-img-top" alt="Product Image">
-        </a>
-        <!-- Product Content -->
-        <div class="card-body">
-          <a href="#" class="text-decoration-none">
-            <h3 class="card-title text-dark">Spring Boot / Angular</h3>
+
+      <div *ngFor="let course of courses" class="col-md-4 mt-2">
+        <div class="card h-100 shadow-sm">
+          <!-- Product Image -->
+          <a href="#">
+            <img src="http://localhost:8081/api/course/images/{{course.image}}" class="card-img-top" alt="Product Image">
           </a>
-          <h5  class="card-text text-muted" style="color: #af2f64 !important;"> 350 DT/ Month</h5>
+          <!-- Product Content -->
+          <div class="card-body">
+            <a href="#" class="text-decoration-none">
+              <h3 class="card-title text-dark">{{course.title}}</h3>
+            </a>
+            <h5  class="card-text text-muted" style="color: #af2f64 !important;"> {{course.price}} DT / Month</h5>
+          </div>
         </div>
       </div>
+
+
     </div>
 
-  </div>
 
 </section>

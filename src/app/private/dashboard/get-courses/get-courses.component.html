@@ -11,20 +11,20 @@
 
         <thead>
         <tr>
-          <th>Id</th>
-          <th>Nom</th>
-          <th>description</th>
-          <th>tel</th>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Price</th>
           <th>#</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr>
-          <td>idResto</td>
-          <td>r.nomResto</td>
-          <td>descriptionResto</td>
-          <td>telResto</td>
+        <tr *ngFor="let c of courses">
+          <td>
+            <img src="http://localhost:8081/api/course/images/{{c.image}}" style="border-radius: 100%" width="65px" height="65px" alt="Product Image">
+          </td>
+          <td> {{ c.title }} </td>
+          <td> {{ c.price }} </td>
           <td>
             <button class="btn btn-warning" routerLink="modifier/r.idResto}}">Edit</button>
             <button class="btn btn-danger ml-4" >Delete</button>
