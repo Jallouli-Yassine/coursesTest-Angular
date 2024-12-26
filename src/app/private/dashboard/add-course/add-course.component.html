@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+      <form [formGroup]="addCourseForm" (ngSubmit)="addCourse()">
+
+        <!-- Course Title Input -->
+        <div class="form-group">
+          <label for="title">Course Title</label>
+          <input formControlName="title" type="text" id="title" class="form-control">
+        </div>
+
+        <div *ngIf="getTitle?.touched && getTitle?.invalid">
+          <small *ngIf="getTitle?.errors!['required']" class="text-danger">Title is required.</small>
+          <small *ngIf="getTitle?.errors!['pattern']" class="text-danger">Invalid title.</small>
+          <small *ngIf="getTitle?.errors!['minlength']" class="text-danger">Title must contain at least 3 characters.</small>
+        </div>
+
+        <!-- Course Price Input -->
+        <div class="form-group">
+          <label for="price">Course Price</label>
+          <input formControlName="price" type="text" id="price" class="form-control">
+        </div>
+
+        <div *ngIf="getPrice?.touched && getPrice?.invalid">
+          <small *ngIf="getPrice?.errors!['required']" class="text-danger">Price is required.</small>
+        </div>
+
+        <!-- Image Upload Input -->
+        <div class="form-group">
+          <label for="image">Course Image</label>
+          <input formControlName="image" type="file" id="image" class="form-control" (change)="onImageChange($event)">
+        </div>
+
+        <!-- Error for Image -->
+        <div *ngIf="getImage?.touched && getImage?.invalid">
+          <small *ngIf="getImage?.errors!['required']" class="text-danger">Image is required.</small>
+        </div>
+
+        <br>
+
+        <input [disabled]="addCourseForm.invalid" type="submit" value="Add Course" class="btn btn-info">
+      </form>
+    </div>
+  </div>
+</div>
