@@ -54,12 +54,10 @@ export class AddCourseComponent {
     // Now send the formData to the backend
     this.courseService.addCourse(formData).subscribe({
       next: (response) => {
-        alert('Course added successfully!');
-        this.router.navigate(['/courses']);
+        this.router.navigate(['/dashboard/courses']);
       },
       error: (err) => {
         console.error('Error adding course:', err);
-        alert('Error adding course!');
       }
     });
   }

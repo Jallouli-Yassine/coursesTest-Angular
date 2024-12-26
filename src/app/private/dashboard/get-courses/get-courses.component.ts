@@ -25,4 +25,19 @@ export class GetCoursesComponent {
     });
   }
 
+
+  deleteCourse(id: number) {
+    if (confirm('Are you sure you want to delete this course?')) {
+      this.courseService.deleteCourse(id).subscribe({
+        next: () => {
+          // Filter out the deleted course from the list
+          this.courses = this.courses.filter(course => course.idCourse !== id);
+        },
+        error: () => {
+          console.error('Failed to delete course');
+        }
+      });
+    }
+  }
+
 }
