@@ -26,7 +26,7 @@
           <td> {{ c.title }} </td>
           <td> {{ c.price }} </td>
           <td>
-            <button class="btn btn-warning" routerLink="modifier/r.idResto}}">Edit</button>
+            <button class="btn btn-warning" [routerLink]="['/dashboard/update-course', c.idCourse]">Edit</button>
             <button (click)="deleteCourse(c.idCourse)" class="btn btn-danger ml-4">Delete</button>
 
             <button  routerLink="Details/r.idResto" class="btn btn-info ml-4" >Details</button>
